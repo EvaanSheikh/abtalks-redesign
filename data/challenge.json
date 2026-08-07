@@ -1,0 +1,37 @@
+{
+  "day": 12,
+  "title": "Build a Responsive Login Page",
+  "description": "Create a clean, mobile-friendly login page using React and Tailwind CSS.",
+  "expectedOutput": "A responsive login page that works comfortably on mobile and desktop.",
+  "acceptanceCriteria": [
+    "Login form is responsive",
+    "Inputs have clear labels",
+    "Form follows the provided design requirements",
+    "Project is committed and pushed to GitHub"
+  ],
+  "difficulty": "Medium",
+  "estimatedTime": "30–45 minutes",
+  "estimatedEffort": "Medium",
+  "technologies": [
+    "React",
+    "Tailwind CSS",
+    "Git"
+  ],
+  "learningObjectives": [
+    "Practice responsive design",
+    "Improve component reuse",
+    "Strengthen Git workflow"
+  ],
+  "resources": [
+    {
+      "title": "React Documentation",
+      "type": "Official Docs",
+      "url": "https://react.dev"
+    },
+    {
+      "title": "Tailwind CSS Documentation",
+      "type": "Official Docs",
+      "url": "https://tailwindcss.com/docs"
+    }
+  ]
+}
