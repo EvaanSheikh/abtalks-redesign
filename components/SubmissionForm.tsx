@@ -8,6 +8,7 @@ interface SubmissionFormProps {
   linkedinPost: string;
   reflection: string;
   onSubmit: () => void;
+  canSubmit: boolean;
 }
 
 export default function SubmissionForm({
@@ -16,6 +17,7 @@ export default function SubmissionForm({
   linkedinPost,
   reflection,
   onSubmit,
+  canSubmit,
 }: SubmissionFormProps) {
   const [repo, setRepo] = useState(githubRepository);
   const [commit, setCommit] = useState(githubCommit);
@@ -24,17 +26,17 @@ export default function SubmissionForm({
 
   const handleSubmit = () => {
     if (!repo.trim()) {
-      alert("Please enter your GitHub Repository URL.");
+      alert("Enter GitHub Repository URL");
       return;
     }
 
     if (!commit.trim()) {
-      alert("Please enter your GitHub Commit URL.");
+      alert("Enter GitHub Commit URL");
       return;
     }
 
     if (!linkedin.trim()) {
-      alert("Please enter your LinkedIn Post URL.");
+      alert("Enter LinkedIn Post URL");
       return;
     }
 
@@ -48,72 +50,76 @@ export default function SubmissionForm({
       </h2>
 
       <p className="mt-2 text-sm text-zinc-400">
-        Share today's work to continue your streak.
+        Complete all checklist items before submitting.
       </p>
 
       <div className="mt-6 space-y-5">
         <div>
-          <label className="mb-2 block text-sm font-medium text-zinc-300">
+          <label className="mb-2 block text-sm text-zinc-300">
             GitHub Repository
           </label>
 
           <input
-            type="url"
             value={repo}
             onChange={(e) => setRepo(e.target.value)}
             placeholder="https://github.com/username/project"
-            className="h-12 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 text-white outline-none transition focus:border-violet-500"
+            className="h-12 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 text-white outline-none focus:border-violet-500"
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-medium text-zinc-300">
+          <label className="mb-2 block text-sm text-zinc-300">
             GitHub Commit
           </label>
 
           <input
-            type="url"
             value={commit}
             onChange={(e) => setCommit(e.target.value)}
-            placeholder="https://github.com/..."
-            className="h-12 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 text-white outline-none transition focus:border-violet-500"
+            placeholder="Commit URL"
+            className="h-12 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 text-white outline-none focus:border-violet-500"
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-medium text-zinc-300">
+          <label className="mb-2 block text-sm text-zinc-300">
             LinkedIn Post
           </label>
 
           <input
-            type="url"
             value={linkedin}
             onChange={(e) => setLinkedin(e.target.value)}
-            placeholder="https://linkedin.com/posts/..."
-            className="h-12 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 text-white outline-none transition focus:border-violet-500"
+            placeholder="LinkedIn Post URL"
+            className="h-12 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-4 text-white outline-none focus:border-violet-500"
           />
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-medium text-zinc-300">
-            Daily Reflection
+          <label className="mb-2 block text-sm text-zinc-300">
+            Reflection
           </label>
 
           <textarea
-            rows={5}
+            rows={4}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             placeholder="What did you learn today?"
-            className="w-full rounded-xl border border-zinc-700 bg-zinc-950 p-4 text-white outline-none transition focus:border-violet-500"
+            className="w-full rounded-xl border border-zinc-700 bg-zinc-950 p-4 text-white outline-none focus:border-violet-500"
           />
         </div>
 
         <button
           type="button"
+          disabled={!canSubmit}
           onClick={handleSubmit}
-          className="h-12 w-full rounded-xl bg-violet-600 font-semibold text-white transition hover:bg-violet-500"
+          className={`h-12 w-full rounded-xl font-semibold transition ${
+            canSubmit
+              ? "bg-violet-600 text-white hover:bg-violet-500"
+              : "cursor-not-allowed bg-zinc-700 text-zinc-400"
+          }`}
         >
-          Submit Challenge
+          {canSubmit
+            ? "Submit Challenge"
+            : "Complete Checklist First"}
         </button>
       </div>
     </section>

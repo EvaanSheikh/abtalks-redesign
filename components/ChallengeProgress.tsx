@@ -19,7 +19,7 @@ export default function ChallengeProgress({
           </h2>
 
           <p className="mt-1 text-sm text-zinc-400">
-            Complete all tasks to finish today's challenge.
+            Track your progress for today's challenge.
           </p>
         </div>
 

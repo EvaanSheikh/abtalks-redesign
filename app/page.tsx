@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ChallengeHeader from "@/components/ChallengeHeader";
 import TaskOverview from "@/components/TaskOverview";
@@ -16,9 +16,61 @@ import challenge from "@/data/challenge.json";
 export default function Home() {
   const [submitted, setSubmitted] = useState(false);
 
+  const [checklist, setChecklist] = useState(challenge.checklist);
+
+  // Restore saved data
+  useEffect(() => {
+    const savedChecklist = localStorage.getItem("challenge-checklist");
+    const savedSubmitted = localStorage.getItem("challenge-submitted");
+
+    if (savedChecklist) {
+      setChecklist(JSON.parse(savedChecklist));
+    }
+
+    if (savedSubmitted) {
+      setSubmitted(JSON.parse(savedSubmitted));
+    }
+  }, []);
+
+  // Save checklist
+  useEffect(() => {
+    localStorage.setItem(
+      "challenge-checklist",
+      JSON.stringify(checklist)
+    );
+  }, [checklist]);
+
+  // Save submission status
+  useEffect(() => {
+    localStorage.setItem(
+      "challenge-submitted",
+      JSON.stringify(submitted)
+    );
+  }, [submitted]);
+
+  const toggleChecklist = (id: number) => {
+    setChecklist((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              completed: !item.completed,
+            }
+          : item
+      )
+    );
+  };
+
+  const completedTasks = checklist.filter(
+    (item) => item.completed
+  ).length;
+
+  const allCompleted =
+    completedTasks === checklist.length;
+
   return (
     <main className="min-h-screen bg-black">
-      <div className="mx-auto flex max-w-4xl flex-col gap-6 p-6">
+      <div className="mx-auto flex max-w-5xl flex-col gap-6 p-6">
 
         <ChallengeHeader
           day={challenge.day}
@@ -26,9 +78,17 @@ export default function Home() {
           description={challenge.description}
           estimatedTime={challenge.estimatedTime}
           difficulty={
-            challenge.difficulty as "Easy" | "Medium" | "Hard"
+            challenge.difficulty as
+              | "Easy"
+              | "Medium"
+              | "Hard"
           }
-          progress={challenge.progress}
+          progress={Math.round((completedTasks / checklist.length) * 100)}
+        />
+
+        <ChallengeProgress
+          completed={completedTasks}
+          total={checklist.length}
         />
 
         <TaskOverview
@@ -42,16 +102,10 @@ export default function Home() {
         <ResourceList
           resources={challenge.resources}
         />
-      
-      <ChallengeProgress
-  completed={
-    challenge.checklist.filter((item) => item.completed).length
-  }
-  total={challenge.checklist.length}
-/>
 
         <Checklist
-          items={challenge.checklist}
+          items={checklist}
+          onToggle={toggleChecklist}
         />
 
         {!submitted ? (
@@ -60,6 +114,7 @@ export default function Home() {
             githubCommit={challenge.submission.githubCommit}
             linkedinPost={challenge.submission.linkedinPost}
             reflection={challenge.submission.reflection}
+            canSubmit={allCompleted}
             onSubmit={() => setSubmitted(true)}
           />
         ) : (
@@ -71,10 +126,7 @@ export default function Home() {
             missedDays={challenge.recovery.missedDays}
           />
         )}
-      <ChallengeProgress
-  completed={0}
-  total={challenge.checklist.length}
-/>
+
       </div>
     </main>
   );

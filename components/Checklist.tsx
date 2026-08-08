@@ -8,19 +8,23 @@ interface ChecklistItem {
 
 interface ChecklistProps {
   items: ChecklistItem[];
+  onToggle: (id: number) => void;
 }
 
 export default function Checklist({
   items,
+  onToggle,
 }: ChecklistProps) {
   const completed = items.filter((item) => item.completed).length;
   const total = items.length;
+  const percentage =
+    total === 0 ? 0 : Math.round((completed / total) * 100);
 
   return (
     <section className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-white">
+          <h2 className="text-xl font-bold text-white">
             Today's Checklist
           </h2>
 
@@ -29,31 +33,33 @@ export default function Checklist({
           </p>
         </div>
 
-        <div className="rounded-full bg-violet-600/10 px-3 py-1 text-sm font-semibold text-violet-400">
+        <div className="rounded-full bg-violet-600/10 px-4 py-2 text-sm font-semibold text-violet-400">
           {completed}/{total}
         </div>
       </div>
 
       <div className="mt-6 space-y-4">
         {items.map((item) => (
-          <div
+          <button
             key={item.id}
-            className="flex items-center gap-4 rounded-2xl border border-zinc-800 bg-zinc-950 p-4 transition-colors hover:border-violet-600"
+            type="button"
+            onClick={() => onToggle(item.id)}
+            className="flex w-full items-center gap-4 rounded-2xl border border-zinc-800 bg-zinc-950 p-4 text-left transition hover:border-violet-500"
           >
             {item.completed ? (
               <CheckCircle2
-                size={22}
                 className="text-green-400"
+                size={22}
               />
             ) : (
               <Circle
-                size={22}
                 className="text-zinc-500"
+                size={22}
               />
             )}
 
             <p
-              className={`flex-1 text-sm ${
+              className={`flex-1 ${
                 item.completed
                   ? "text-zinc-500 line-through"
                   : "text-white"
@@ -61,7 +67,7 @@ export default function Checklist({
             >
               {item.title}
             </p>
-          </div>
+          </button>
         ))}
       </div>
 
@@ -71,8 +77,8 @@ export default function Checklist({
             Overall Progress
           </span>
 
-          <span className="text-violet-400">
-            {Math.round((completed / total) * 100)}%
+          <span className="font-semibold text-violet-400">
+            {percentage}%
           </span>
         </div>
 
@@ -80,7 +86,7 @@ export default function Checklist({
           <div
             className="h-full rounded-full bg-violet-600 transition-all duration-500"
             style={{
-              width: `${(completed / total) * 100}%`,
+              width: `${percentage}%`,
             }}
           />
         </div>
