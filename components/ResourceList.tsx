@@ -1,7 +1,8 @@
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRight, BookOpen } from "lucide-react";
 
 interface Resource {
   title: string;
+  type: string;
   url: string;
 }
 
@@ -13,37 +14,41 @@ export default function ResourceList({
   resources,
 }: ResourceListProps) {
   return (
-    <section className="rounded-2xl border border-zinc-800 bg-zinc-950 p-5 text-white">
-      <div>
-        <h2 className="text-lg font-semibold">Resources</h2>
+    <section className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6">
+      <div className="flex items-center gap-2">
+        <BookOpen className="text-violet-400" size={20} />
 
-        <p className="mt-2 text-sm text-zinc-400">
-          Use these resources to complete today's challenge.
-        </p>
+        <h2 className="text-lg font-semibold text-white">
+          Learning Resources
+        </h2>
       </div>
 
-      <div className="mt-5 space-y-3">
-        {resources.map((resource) => (
+      <p className="mt-2 text-sm text-zinc-400">
+        Recommended resources to complete today's challenge.
+      </p>
+
+      <div className="mt-6 space-y-4">
+        {resources.map((resource, index) => (
           <a
-            key={resource.url}
+            key={index}
             href={resource.url}
             target="_blank"
-            rel="noreferrer"
-            className="flex items-center justify-between rounded-xl border border-zinc-800 p-4 transition-all hover:border-zinc-700"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-950 p-4 transition-all duration-200 hover:border-violet-500 hover:bg-zinc-900"
           >
             <div>
-              <p className="text-sm font-medium text-white">
+              <h3 className="font-medium text-white">
                 {resource.title}
-              </p>
+              </h3>
 
-              <p className="mt-1 truncate text-xs text-zinc-500">
-                {resource.url}
+              <p className="mt-1 text-sm text-zinc-500">
+                {resource.type}
               </p>
             </div>
 
-            <ExternalLink
-              size={18}
-              className="text-zinc-400"
+            <ArrowUpRight
+              size={20}
+              className="text-zinc-500 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-violet-400"
             />
           </a>
         ))}

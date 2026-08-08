@@ -3,25 +3,34 @@
   "title": "Build a Responsive Login Page",
   "description": "Create a clean, mobile-friendly login page using React and Tailwind CSS.",
   "expectedOutput": "A responsive login page that works comfortably on mobile and desktop.",
+  "difficulty": "Medium",
+  "estimatedTime": "30–45 minutes",
+  "estimatedEffort": "Medium",
+  "progress": 60,
+  "status": "In Progress",
+  "xpReward": 150,
+  "milestone": "Day 12 of 60",
+  "nextChallenge": "Authentication UI",
+
+  "technologies": [
+    "React",
+    "Tailwind CSS",
+    "Git"
+  ],
+
+  "learningObjectives": [
+    "Practice responsive design",
+    "Improve component reuse",
+    "Strengthen Git workflow"
+  ],
+
   "acceptanceCriteria": [
     "Login form is responsive",
     "Inputs have clear labels",
     "Form follows the provided design requirements",
     "Project is committed and pushed to GitHub"
   ],
-  "difficulty": "Medium",
-  "estimatedTime": "30–45 minutes",
-  "estimatedEffort": "Medium",
-  "technologies": [
-    "React",
-    "Tailwind CSS",
-    "Git"
-  ],
-  "learningObjectives": [
-    "Practice responsive design",
-    "Improve component reuse",
-    "Strengthen Git workflow"
-  ],
+
   "resources": [
     {
       "title": "React Documentation",
@@ -32,6 +41,59 @@
       "title": "Tailwind CSS Documentation",
       "type": "Official Docs",
       "url": "https://tailwindcss.com/docs"
+    },
+    {
+      "title": "Responsive Design Guide",
+      "type": "Guide",
+      "url": "https://tailwindcss.com/docs/responsive-design"
     }
-  ]
+  ],
+
+  "checklist": [
+    {
+      "id": 1,
+      "title": "Create the login page UI",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Make the page responsive",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "title": "Commit the project to GitHub",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Push the code to GitHub",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "title": "Share your progress on LinkedIn",
+      "completed": false
+    }
+  ],
+
+  "submission": {
+    "githubRepository": "",
+    "githubCommit": "",
+    "linkedinPost": "",
+    "reflection": ""
+  },
+
+  "success": {
+    "title": "Challenge Submitted",
+    "message": "Great work! Your challenge has been submitted successfully.",
+    "streakReward": "+1 Day Streak",
+    "xpEarned": 150
+  },
+
+  "recovery": {
+    "enabled": true,
+    "missedDays": 1,
+    "message": "Complete today's challenge and one recovery task to restore your streak."
+  }
 }
