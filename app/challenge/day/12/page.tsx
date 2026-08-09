@@ -17,9 +17,8 @@ export default function ChallengeDay12Page() {
   const totalTasks = challenge.checklist.length;
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white">
+    <main className="min-h-screen bg-black text-white">
       <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6 lg:px-8">
-
         {/* Page Header */}
         <div className="mb-8">
           <p className="text-sm font-medium uppercase tracking-[0.25em] text-violet-400">
@@ -31,7 +30,7 @@ export default function ChallengeDay12Page() {
           </h1>
 
           <p className="mt-2 text-sm text-zinc-400">
-            Complete today's challenge and keep your learning streak alive.
+            Complete today&apos;s challenge and keep your learning streak alive.
           </p>
         </div>
 
@@ -55,7 +54,6 @@ export default function ChallengeDay12Page() {
 
         {/* Main Content */}
         <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_0.8fr]">
-
           {/* Task */}
           <TaskOverview
             title={challenge.title}
@@ -67,7 +65,6 @@ export default function ChallengeDay12Page() {
 
           {/* Sidebar */}
           <aside className="space-y-6">
-
             {/* Challenge Information */}
             <section className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6 shadow-lg">
               <h2 className="text-lg font-bold text-white">
@@ -75,7 +72,6 @@ export default function ChallengeDay12Page() {
               </h2>
 
               <div className="mt-5 space-y-4">
-
                 <div>
                   <p className="text-xs uppercase tracking-wider text-zinc-500">
                     Difficulty
@@ -115,7 +111,6 @@ export default function ChallengeDay12Page() {
                     {challenge.progress}%
                   </p>
                 </div>
-
               </div>
             </section>
 
@@ -167,10 +162,8 @@ export default function ChallengeDay12Page() {
                 ))}
               </div>
             </section>
-
           </aside>
         </div>
-
       </div>
     </main>
   );
