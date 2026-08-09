@@ -1,0 +1,94 @@
+{
+  "day": 12,
+  "title": "Complete Today's Coding Challenge",
+  "description": "Solve today's coding challenge, submit your solution, and maintain your daily learning streak.",
+  "expectedOutput": "A responsive login page that works comfortably on mobile and desktop.",
+  "difficulty": "Medium",
+  "estimatedTime": "30–45 minutes",
+  "estimatedEffort": "Medium",
+  "progress": 0,
+
+  "technologies": [
+    "React",
+    "Tailwind CSS",
+    "Git"
+  ],
+
+  "learningObjectives": [
+    "Practice responsive design",
+    "Improve component reuse",
+    "Strengthen Git workflow"
+  ],
+
+  "acceptanceCriteria": [
+    "Login form is responsive",
+    "Inputs have clear labels",
+    "Form follows the provided design requirements",
+    "Project is committed and pushed to GitHub"
+  ],
+
+  "resources": [
+    {
+      "title": "React Documentation",
+      "type": "Official Docs",
+      "url": "https://react.dev"
+    },
+    {
+      "title": "Tailwind CSS Documentation",
+      "type": "Official Docs",
+      "url": "https://tailwindcss.com/docs"
+    },
+    {
+      "title": "Tailwind Responsive Design",
+      "type": "Guide",
+      "url": "https://tailwindcss.com/docs/responsive-design"
+    }
+  ],
+
+  "checklist": [
+    {
+      "id": 1,
+      "title": "Create the login page UI",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Make the page responsive",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "title": "Commit the project to GitHub",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Push the code to GitHub",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "title": "Share your progress on LinkedIn",
+      "completed": false
+    }
+  ],
+
+  "submission": {
+    "githubRepository": "",
+    "githubCommit": "",
+    "linkedinPost": "",
+    "reflection": ""
+  },
+
+  "success": {
+    "title": "Challenge Submitted",
+    "message": "Great work! Your challenge has been submitted successfully.",
+    "streakReward": "+1 Day Streak"
+  },
+
+  "recovery": {
+    "enabled": true,
+    "missedDays": 1,
+    "message": "Complete today's challenge and one recovery task to restore your streak."
+  }
+}

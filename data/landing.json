@@ -1,0 +1,23 @@
+{
+  "hero": {
+    "badge": "60-Day Coding Challenge",
+    "title": "Stay Consistent. The Portfolio Follows.",
+    "description": "Complete one coding challenge each day, share your progress on GitHub and LinkedIn, and build a portfolio through consistent practice—not last-minute cramming.",
+    "primaryCTA": "Start the Challenge",
+    "secondaryCTA": "See How It Works"
+  },
+  "heroStats": [
+    {
+      "value": "12,000+",
+      "label": "Students Joined"
+    },
+    {
+      "value": "540,000+",
+      "label": "GitHub Commits"
+    },
+    {
+      "value": "92%",
+      "label": "Completion Satisfaction"
+    }
+  ]
+}

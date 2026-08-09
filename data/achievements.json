@@ -1,0 +1,34 @@
+[
+  {
+    "id": "a1",
+    "title": "First Commit",
+    "description": "Made your first Git commit.",
+    "icon": "🚀",
+    "unlocked": true,
+    "progress": 100
+  },
+  {
+    "id": "a2",
+    "title": "7-Day Streak",
+    "description": "Stay consistent for 7 days.",
+    "icon": "🔥",
+    "unlocked": true,
+    "progress": 100
+  },
+  {
+    "id": "a3",
+    "title": "LinkedIn Beginner",
+    "description": "Publish your first LinkedIn update.",
+    "icon": "💼",
+    "unlocked": false,
+    "progress": 60
+  },
+  {
+    "id": "a4",
+    "title": "Portfolio Builder",
+    "description": "Complete 20 challenge days.",
+    "icon": "⭐",
+    "unlocked": false,
+    "progress": 40
+  }
+]

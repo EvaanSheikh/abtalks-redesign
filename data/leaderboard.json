@@ -1,0 +1,38 @@
+[
+  {
+    "id": "u1",
+    "rank": 1,
+    "name": "Aarav",
+    "avatar": "/avatars/user1.png",
+    "xp": 4800,
+    "streak": 28,
+    "isCurrentUser": false
+  },
+  {
+    "id": "u2",
+    "rank": 2,
+    "name": "Riya",
+    "avatar": "/avatars/user2.png",
+    "xp": 4500,
+    "streak": 26,
+    "isCurrentUser": false
+  },
+  {
+    "id": "u3",
+    "rank": 3,
+    "name": "Kabir",
+    "avatar": "/avatars/user3.png",
+    "xp": 4200,
+    "streak": 24,
+    "isCurrentUser": false
+  },
+  {
+    "id": "student-1",
+    "rank": 14,
+    "name": "Evaan Sheikh",
+    "avatar": "/avatars/default.png",
+    "xp": 1280,
+    "streak": 12,
+    "isCurrentUser": true
+  }
+]
