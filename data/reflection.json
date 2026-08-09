@@ -1,23 +1,16 @@
 [
   {
-    "id": "r1",
-    "day": 11,
-    "title": "Learned React State",
-    "learned": "Built reusable state management for multiple components.",
-    "createdAt": "2026-08-07"
+    "id": "reflection-1",
+    "day": 1,
+    "learned": "",
+    "challenged": "",
+    "improveTomorrow": ""
   },
   {
-    "id": "r2",
-    "day": 10,
-    "title": "Improved CSS Grid",
-    "learned": "Understood responsive layouts using CSS Grid.",
-    "createdAt": "2026-08-06"
-  },
-  {
-    "id": "r3",
-    "day": 9,
-    "title": "Mastered TypeScript Props",
-    "learned": "Created reusable interfaces for React components.",
-    "createdAt": "2026-08-05"
+    "id": "reflection-2",
+    "day": 2,
+    "learned": "",
+    "challenged": "",
+    "improveTomorrow": ""
   }
 ]

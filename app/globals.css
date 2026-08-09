@@ -1,12 +1,46 @@
 @import "tailwindcss";
 
-/* GLOBAL BASE */
+/* =========================================================
+   THEME VARIABLES
+   ========================================================= */
+
 :root {
   --background: #09090b;
   --foreground: #ffffff;
+
+  --card: #111113;
+  --card-elevated: #18181b;
+
+  --primary: #7c3aed;
+  --primary-hover: #8b5cf6;
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  --border: #27272a;
+  --divider: #3f3f46;
+
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
 }
 
-* {
+/* Tailwind v4 theme mapping */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* =========================================================
+   RESET / GLOBAL BASE
+   ========================================================= */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -17,6 +51,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+
   background:
     radial-gradient(
       circle at 20% 20%,
@@ -33,66 +68,144 @@ body {
       rgba(59, 130, 246, 0.1),
       transparent 35%
     ),
-    #09090b;
-  color: #ffffff;
+    radial-gradient(
+      circle at top,
+      rgba(124, 58, 237, 0.12),
+      transparent 40%
+    ),
+    var(--background);
+
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* GLOBAL INTERACTION */
-button,
+/* =========================================================
+   GLOBAL ELEMENTS
+   ========================================================= */
+
 a {
-  -webkit-tap-highlight-color: transparent;
+  color: inherit;
+  text-decoration: none;
 }
 
 button {
   cursor: pointer;
+  font: inherit;
+  transition:
+    transform 0.2s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+input,
+textarea {
+  font: inherit;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.25);
 }
 
 ::selection {
-  background: rgba(124, 58, 237, 0.35);
+  background: #8b5cf6;
   color: white;
 }
 
-/* CUSTOM CLASSES */
-@layer components {
-  .container-custom {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
+/* =========================================================
+   RESPONSIVE CONTAINER
+   ========================================================= */
 
-  .section {
-    @apply px-5 py-14;
-  }
-
-  .card {
-    @apply rounded-2xl border border-[#27272A] bg-[#09090B] p-5 transition duration-200;
-  }
-
-  .card:hover {
-    border-color: #3f3f46;
-  }
-
-  .btn-primary {
-    @apply rounded-xl bg-[#6D5DF6] px-5 py-3 text-sm font-medium transition-transform duration-200;
-  }
-
-  .btn-primary:hover {
-    transform: scale(1.02);
-    opacity: 0.9;
-  }
-
-  .btn-secondary {
-    @apply rounded-xl border border-[#3F3F46] px-5 py-3 text-sm transition duration-200;
-  }
-
-  .btn-secondary:hover {
-    opacity: 0.8;
-  }
+.container-custom {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
-/* ANIMATION */
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.section {
+  @apply px-5 py-14;
+}
+
+/* =========================================================
+   CUSTOM CARD
+   ========================================================= */
+
+.card {
+  @apply rounded-2xl border border-[#27272A] bg-[#09090B] p-5 transition duration-200;
+}
+
+.card:hover {
+  border-color: #3f3f46;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn-primary {
+  @apply rounded-xl bg-[#6D5DF6] px-5 py-3 text-sm font-medium transition-transform duration-200;
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  @apply rounded-xl border border-[#3F3F46] px-5 py-3 text-sm transition duration-200;
+}
+
+.btn-secondary:hover {
+  opacity: 0.8;
+}
+
+/* =========================================================
+   GLASS EFFECT
+   ========================================================= */
+
+.glass {
+  background: rgba(24, 24, 27, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* =========================================================
+   HOVER CARD
+   ========================================================= */
+
+.hover-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.2);
+}
+
+/* =========================================================
+   FADE IN
+   ========================================================= */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -109,9 +222,50 @@ button {
   animation: fadeIn 0.8s ease forwards;
 }
 
-/* SCROLLBAR */
+/* =========================================================
+   FLOAT ANIMATION
+   ========================================================= */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* =========================================================
+   GLOW ANIMATION
+   ========================================================= */
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(124, 58, 237, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 18px rgba(124, 58, 237, 0.35);
+  }
+}
+
+.glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -119,10 +273,18 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: linear-gradient(
+    to bottom,
+    #7c3aed,
+    #a855f7
+  );
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: linear-gradient(
+    to bottom,
+    #8b5cf6,
+    #c084fc
+  );
 }

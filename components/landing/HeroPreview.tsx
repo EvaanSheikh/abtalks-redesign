@@ -3,8 +3,8 @@ import { Badge } from "@/components/ui/badge";
 
 import {
   Flame,
-  Github,
-  Linkedin,
+  Code2,
+  Users,
   CheckCircle2,
 } from "lucide-react";
 
@@ -71,7 +71,7 @@ export default function HeroPreview() {
 
           <div className="flex items-center justify-between rounded-xl bg-zinc-800 p-3">
             <div className="flex items-center gap-3">
-              <Github className="h-5 w-5 text-white" />
+              <Code2  className="h-5 w-5 text-white" />
 
               <span className="text-sm text-white">
                 GitHub Repository
@@ -83,7 +83,7 @@ export default function HeroPreview() {
 
           <div className="flex items-center justify-between rounded-xl bg-zinc-800 p-3">
             <div className="flex items-center gap-3">
-              <Linkedin className="h-5 w-5 text-[#0A66C2]" />
+              <Users className="h-5 w-5 text-[#0A66C2]" />
 
               <span className="text-sm text-white">
                 LinkedIn Post

@@ -1,7 +1,7 @@
 export interface Reflection {
-  id: string;
-  day: number;
-  title: string;
+  id?: string;
+  day?: number;
   learned: string;
-  createdAt: string;
+  challenged: string;
+  improveTomorrow: string;
 }
