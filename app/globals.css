@@ -1,26 +1,78 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* GLOBAL BASE */
+body {
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(59, 130, 246, 0.15),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(139, 92, 246, 0.15),
+      transparent 40%
+    ),
+    #09090B;
+  color: white;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* CUSTOM CLASSES */
+@layer components {
+  
+  .container-custom {
+    max-width: 390px;
+    margin: 0 auto;
+  }
+
+  .section {
+    @apply px-5 py-14;
+  }
+
+  .card {
+    @apply border border-[#27272A] rounded-2xl p-5 bg-[#09090B] transition duration-200 hover:border-[#3F3F46];
+  }
+
+  .btn-primary {
+    @apply bg-[#6D5DF6] px-5 py-3 rounded-xl text-sm font-medium transition-transform duration-200 hover:scale-[1.02] hover:opacity-90;
+  }
+
+  .btn-secondary {
+    @apply border border-[#3F3F46] px-5 py-3 rounded-xl text-sm transition duration-200 hover:opacity-80;
+  }
+
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease forwards;
 }
