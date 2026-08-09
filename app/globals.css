@@ -1,8 +1,24 @@
 @import "tailwindcss";
 
 /* GLOBAL BASE */
+:root {
+  --background: #09090b;
+  --foreground: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: radial-gradient(
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(
       circle at 20% 20%,
       rgba(59, 130, 246, 0.15),
       transparent 40%
@@ -12,21 +28,38 @@ body {
       rgba(139, 92, 246, 0.15),
       transparent 40%
     ),
-    #09090B;
-  color: white;
+    radial-gradient(
+      circle at bottom left,
+      rgba(59, 130, 246, 0.1),
+      transparent 35%
+    ),
+    #09090b;
+  color: #ffffff;
 }
 
-/* SMOOTH SCROLL */
-html {
-  scroll-behavior: smooth;
+/* GLOBAL INTERACTION */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.35);
+  color: white;
 }
 
 /* CUSTOM CLASSES */
 @layer components {
-  
   .container-custom {
-    max-width: 390px;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .section {
@@ -34,55 +67,38 @@ html {
   }
 
   .card {
-    @apply border border-[#27272A] rounded-2xl p-5 bg-[#09090B] transition duration-200 hover:border-[#3F3F46];
+    @apply rounded-2xl border border-[#27272A] bg-[#09090B] p-5 transition duration-200;
+  }
+
+  .card:hover {
+    border-color: #3f3f46;
   }
 
   .btn-primary {
-    @apply bg-[#6D5DF6] px-5 py-3 rounded-xl text-sm font-medium transition-transform duration-200 hover:scale-[1.02] hover:opacity-90;
+    @apply rounded-xl bg-[#6D5DF6] px-5 py-3 text-sm font-medium transition-transform duration-200;
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
   }
 
   .btn-secondary {
-    @apply border border-[#3F3F46] px-5 py-3 rounded-xl text-sm transition duration-200 hover:opacity-80;
+    @apply rounded-xl border border-[#3F3F46] px-5 py-3 text-sm transition duration-200;
   }
 
+  .btn-secondary:hover {
+    opacity: 0.8;
+  }
 }
 
 /* ANIMATION */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.4s ease forwards;
-}
-<<<<<<< HEAD
-
-body {
-  background:
-    radial-gradient(circle at top right, rgba(124,58,237,.16), transparent 35%),
-    radial-gradient(circle at bottom left, rgba(59,130,246,.10), transparent 35%),
-    #09090b;
-
-  color: white;
-  min-height: 100vh;
-}
-
-::selection{
-  background:#7c3aed;
-  color:white;
-=======
-@keyframes fadeIn {
-  from {
-    opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -91,5 +107,22 @@ body {
 
 .animate-fadeIn {
   animation: fadeIn 0.8s ease forwards;
->>>>>>> origin/landing-page
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
 }
