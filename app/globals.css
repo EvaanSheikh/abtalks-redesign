@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* =========================
+   Theme Variables
+========================= */
+
 :root {
   --background: #09090b;
   --foreground: #ffffff;
@@ -7,8 +11,8 @@
   --card: #111113;
   --card-elevated: #18181b;
 
-  --primary: #6d5df6;
-  --primary-hover: #8b7cff;
+  --primary: #7c3aed;
+  --primary-hover: #8b5cf6;
 
   --success: #22c55e;
   --warning: #f59e0b;
@@ -29,7 +33,13 @@
   --font-mono: var(--font-geist-mono);
 }
 
-* {
+/* =========================
+   Reset
+========================= */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -40,10 +50,16 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--background);
+  background:
+    radial-gradient(circle at top, rgba(124, 58, 237, 0.12), transparent 40%),
+    var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* =========================
+   Global Elements
+========================= */
 
 a {
   color: inherit;
@@ -61,6 +77,130 @@ button {
 }
 
 ::selection {
-  background: #6d5df6;
-  color: #ffffff;
+  background: #8b5cf6;
+  color: white;
+}
+
+/* =========================
+   Scrollbar
+========================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    #7c3aed,
+    #a855f7
+  );
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    #8b5cf6,
+    #c084fc
+  );
+}
+
+/* =========================
+   Utility Classes
+========================= */
+
+.glass {
+  background: rgba(24, 24, 27, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.hover-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 40px rgba(124, 58, 237, 0.2);
+}
+
+/* =========================
+   Smooth Buttons
+========================= */
+
+button {
+  transition:
+    transform 0.2s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   Inputs
+========================= */
+
+input,
+textarea {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow:
+    0 0 0 3px rgba(124, 58, 237, 0.25);
+}
+
+/* =========================
+   Animations
+========================= */
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(124, 58, 237, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 18px rgba(124, 58, 237, 0.35);
+  }
+}
+
+.glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
 }

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import toast from "react-hot-toast";
+import confetti from "canvas-confetti";
 
 interface SubmissionFormProps {
   githubRepository: string;
@@ -26,25 +28,35 @@ export default function SubmissionForm({
 
   const handleSubmit = () => {
     if (!repo.trim()) {
-      alert("Enter GitHub Repository URL");
+      toast.error("Enter GitHub Repository URL");
       return;
     }
 
     if (!commit.trim()) {
-      alert("Enter GitHub Commit URL");
+      toast.error("Enter GitHub Commit URL");
       return;
     }
 
     if (!linkedin.trim()) {
-      alert("Enter LinkedIn Post URL");
+      toast.error("Enter LinkedIn Post URL");
       return;
     }
+
+    toast.success("🎉 Challenge Submitted Successfully!");
+
+    confetti({
+      particleCount: 120,
+      spread: 80,
+      origin: {
+        y: 0.6,
+      },
+    });
 
     onSubmit();
   };
 
   return (
-    <section className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6">
+    <section className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6 shadow-lg">
       <h2 className="text-2xl font-bold text-white">
         Submit Today's Challenge
       </h2>
@@ -54,6 +66,7 @@ export default function SubmissionForm({
       </p>
 
       <div className="mt-6 space-y-5">
+
         <div>
           <label className="mb-2 block text-sm text-zinc-300">
             GitHub Repository
@@ -121,6 +134,7 @@ export default function SubmissionForm({
             ? "Submit Challenge"
             : "Complete Checklist First"}
         </button>
+
       </div>
     </section>
   );

@@ -1,16 +1,12 @@
 {
   "day": 12,
-  "title": "Build a Responsive Login Page",
-  "description": "Create a clean, mobile-friendly login page using React and Tailwind CSS.",
+  "title": "Complete Today's Coding Challenge",
+  "description": "Solve today's coding challenge, submit your solution, and maintain your daily learning streak.",
   "expectedOutput": "A responsive login page that works comfortably on mobile and desktop.",
   "difficulty": "Medium",
   "estimatedTime": "30–45 minutes",
   "estimatedEffort": "Medium",
-  "progress": 60,
-  "status": "In Progress",
-  "xpReward": 150,
-  "milestone": "Day 12 of 60",
-  "nextChallenge": "Authentication UI",
+  "progress": 0,
 
   "technologies": [
     "React",
@@ -43,7 +39,7 @@
       "url": "https://tailwindcss.com/docs"
     },
     {
-      "title": "Responsive Design Guide",
+      "title": "Tailwind Responsive Design",
       "type": "Guide",
       "url": "https://tailwindcss.com/docs/responsive-design"
     }
@@ -87,8 +83,7 @@
   "success": {
     "title": "Challenge Submitted",
     "message": "Great work! Your challenge has been submitted successfully.",
-    "streakReward": "+1 Day Streak",
-    "xpEarned": 150
+    "streakReward": "+1 Day Streak"
   },
 
   "recovery": {
