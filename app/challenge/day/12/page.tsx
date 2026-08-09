@@ -5,7 +5,10 @@ import TaskOverview from "@/components/TaskOverview";
 import challengeData from "@/data/challenge.json";
 
 export default function ChallengeDay12Page() {
-  const challenge = challengeData;
+  const challenge = {
+    ...challengeData,
+    difficulty: challengeData.difficulty as "Easy" | "Medium" | "Hard",
+  };
 
   const completedTasks = challenge.checklist.filter(
     (task) => task.completed
@@ -14,8 +17,8 @@ export default function ChallengeDay12Page() {
   const totalTasks = challenge.checklist.length;
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      <div className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-8 lg:px-10">
+    <main className="min-h-screen bg-zinc-950 text-white">
+      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6 lg:px-8">
 
         {/* Page Header */}
         <div className="mb-8">
