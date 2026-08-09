@@ -7,22 +7,26 @@ interface SeparatorProps
   orientation?: "horizontal" | "vertical";
 }
 
-export function Separator({
-  orientation = "horizontal",
+function Separator({
   className,
+  orientation = "horizontal",
   ...props
 }: SeparatorProps) {
   return (
     <div
+      data-slot="separator"
       role="separator"
+      aria-orientation={orientation}
       className={cn(
+        "shrink-0 bg-zinc-800",
         orientation === "horizontal"
           ? "h-px w-full"
           : "h-full w-px",
-        "bg-[#27272A]",
         className
       )}
       {...props}
     />
   );
 }
+
+export { Separator };

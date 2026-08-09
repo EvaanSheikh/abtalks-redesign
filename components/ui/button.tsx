@@ -1,78 +1,121 @@
-import * as React from "react";
+"use client";
 
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-type ButtonVariant =
-  | "default"
-  | "secondary"
-  | "outline"
-  | "ghost"
-  | "destructive";
+const buttonVariants = cva(
+  [
+    "inline-flex",
+    "shrink-0",
+    "items-center",
+    "justify-center",
+    "gap-2",
+    "rounded-xl",
+    "border",
+    "border-transparent",
+    "text-sm",
+    "font-medium",
+    "whitespace-nowrap",
+    "transition-all",
+    "duration-200",
+    "outline-none",
+    "select-none",
+    "focus-visible:ring-2",
+    "focus-visible:ring-violet-500/40",
+    "disabled:pointer-events-none",
+    "disabled:opacity-50",
+    "[&_svg]:pointer-events-none",
+    "[&_svg]:shrink-0",
+  ],
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-violet-600 text-white hover:bg-violet-500",
 
-type ButtonSize =
-  | "sm"
-  | "default"
-  | "lg"
-  | "icon";
+        secondary:
+          "border-zinc-800 bg-zinc-900 text-white hover:bg-zinc-800",
+
+        outline:
+          "border-zinc-700 bg-transparent text-white hover:bg-zinc-900",
+
+        ghost:
+          "border-transparent bg-transparent text-white hover:bg-zinc-900",
+
+        destructive:
+          "border-transparent bg-red-500 text-white hover:bg-red-600",
+
+        link:
+          "border-transparent bg-transparent text-violet-400 underline-offset-4 hover:underline",
+      },
+
+      size: {
+        default: "h-10 px-4",
+        xs: "h-6 px-2.5 text-xs",
+        sm: "h-9 px-3",
+        lg: "h-12 px-6 text-base",
+        icon: "h-10 w-10",
+        "icon-xs": "h-6 w-6",
+        "icon-sm": "h-8 w-8",
+        "icon-lg": "h-12 w-12",
+      },
+    },
+
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+);
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
 }
 
-const variants: Record<ButtonVariant, string> = {
-  default:
-    "bg-[#6D5DF6] text-white hover:bg-[#5B4CF2]",
-
-  secondary:
-    "bg-[#18181B] border border-[#27272A] text-white hover:bg-[#222225]",
-
-  outline:
-    "border border-[#27272A] bg-transparent text-white hover:bg-[#18181B]",
-
-  ghost:
-    "bg-transparent text-white hover:bg-[#18181B]",
-
-  destructive:
-    "bg-[#EF4444] text-white hover:bg-red-600",
-};
-
-const sizes: Record<ButtonSize, string> = {
-  sm: "h-9 px-3 text-sm",
-  default: "h-12 px-4 text-sm",
-  lg: "h-12 px-6 text-base",
-  icon: "h-10 w-10",
-};
-
-export const Button = React.forwardRef<
-  HTMLButtonElement,
-  ButtonProps
->(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-  {
-  className,
-  variant = "default",
-  size = "default",
-  disabled,
-  children,
-  ...props
-},
+    {
+      className,
+      variant = "default",
+      size = "default",
+      asChild = false,
+      children,
+      ...props
+    },
     ref
   ) => {
+    const classes = cn(
+      buttonVariants({
+        variant,
+        size,
+      }),
+      className
+    );
+
+    if (asChild) {
+      const child = React.Children.only(children);
+
+      if (!React.isValidElement(child)) {
+        throw new Error(
+          "Button with asChild requires a single valid React element."
+        );
+      }
+
+      return React.cloneElement(child, {
+        className: cn(
+          classes,
+          (child.props as { className?: string }).className
+        ),
+      });
+    }
+
     return (
       <button
         ref={ref}
-        disabled={disabled}
-        className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-200",
-          "focus:outline-none focus:ring-2 focus:ring-[#6D5DF6]",
-          "disabled:pointer-events-none disabled:opacity-50",
-          variants[variant],
-          sizes[size],
-          className
-        )}
+        className={classes}
         {...props}
       >
         {children}
@@ -82,3 +125,5 @@ export const Button = React.forwardRef<
 );
 
 Button.displayName = "Button";
+
+export { Button, buttonVariants };
