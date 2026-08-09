@@ -1,0 +1,45 @@
+{
+  "id": "student-1",
+  "name": "Evaan Sheikh",
+  "avatar": "/avatars/default.png",
+  "track": "Full Stack Development",
+  "level": 4,
+  "xp": 1280,
+  "currentStreak": 12,
+  "longestStreak": 18,
+  "completedDays": 12,
+  "totalDays": 60,
+  "rank": 14,
+  "recoveryAvailable": false,
+  "joinedAt": "2026-08-01",
+  "weeklyActivity": [
+    {
+      "day": "Mon",
+      "status": "completed"
+    },
+    {
+      "day": "Tue",
+      "status": "completed"
+    },
+    {
+      "day": "Wed",
+      "status": "completed"
+    },
+    {
+      "day": "Thu",
+      "status": "missed"
+    },
+    {
+      "day": "Fri",
+      "status": "recovery"
+    },
+    {
+      "day": "Sat",
+      "status": "completed"
+    },
+    {
+      "day": "Sun",
+      "status": "today"
+    }
+  ]
+}

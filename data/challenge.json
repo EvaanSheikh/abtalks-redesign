@@ -1,0 +1,12 @@
+{
+  "id": "day-12",
+  "day": 12,
+  "title": "Build Authentication System",
+  "difficulty": "Medium",
+  "estimatedTime": 30,
+  "technologies": [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS"
+  ]
+}
